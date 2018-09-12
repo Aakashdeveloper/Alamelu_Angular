@@ -16,7 +16,7 @@
                 <h4>Filter Result: Number of Item Searched :</h4>
             </div>
         </div>
-        <div class="table-responsive">
+        <div class="table-responsive" *ngIf="showTable">
             <table class="table">
                 <thead>
                     <tr>
@@ -33,8 +33,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
+                    <tr *ngFor="let product of products">
+                        <td>
+                            <img [src]="product.imageUrl"/>
+                        </td>
+                        <td>{{product.productName | myUpper:"upper"}}</td>
+                        <td>{{product.productCode | myUpper:"lower"}}</td>
+                        <td>{{product.releaseDate }}</td>
+                        <td>{{product.price | addValue |  currency:"AUD"}}</td>
+                        <td>{{product.starRating}}</td>
                     </tr>
                 </tbody>
             </table>

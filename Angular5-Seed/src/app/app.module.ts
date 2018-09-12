@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { DashComponent } from './dashbaord.component';
 import { ProductComponent } from './products/product.component';
+import { MyUpperPipe } from './products/myUpper.pipe';
+import { AddValuePipe } from './products/addValue.pipe';
 
 @NgModule({
     // All the modules will declare here
@@ -14,7 +16,9 @@ import { ProductComponent } from './products/product.component';
     declarations: [
         AppComponent,
         DashComponent,
-        ProductComponent
+        ProductComponent,
+        MyUpperPipe,
+        AddValuePipe
 
     ],
     // Only Main Component Declare here
