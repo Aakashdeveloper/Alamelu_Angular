@@ -9,6 +9,7 @@ import { IProduct } from './product.model';
 export class ProductComponent {
     title: String = '*****Product List******';
     showTable: Boolean = true;
+    userInput: String = 'leaf';
     products: IProduct[] = [
         {
             '_id': '5a05dacc734d1d68d42d31f3',

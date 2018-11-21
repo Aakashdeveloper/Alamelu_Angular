@@ -8,12 +8,12 @@
                 Filter By:
             </div>
             <div class="col-md-4">
-                <input type="text" placeholder="Enter your Search"/>
+                <input type="text" placeholder="Enter your Search" [(ngModel)] = "userInput"/>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <h4>Filter Result: Number of Item Searched :</h4>
+                <h4>Filter Result: Number of Item Searched : {{userInput}}</h4>
             </div>
         </div>
         <div class="table-responsive" *ngIf="showTable">
@@ -33,7 +33,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let product of products">
+                    <tr *ngFor="let product of products | filterProduct:userInput">
                         <td>
                             <img [src]="product.imageUrl"/>
                         </td>
