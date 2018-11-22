@@ -3,13 +3,17 @@ import { IProduct } from './product.model';
 
 @Component({
     selector: 'app-prod',
-    templateUrl: './product.component.html'
+    templateUrl: './product.component.html',
+    // styles: ['thead{color:green}', 'h4{color:tomato}'],
+    styleUrls : ['./product.component.css']
 })
 
 export class ProductComponent {
     title: String = '*****Product List******';
     showTable: Boolean = true;
-    userInput: String = 'leaf';
+    showImage: Boolean = true;
+    imageWidth: Number = 150;
+    userInput: String;
     products: IProduct[] = [
         {
             '_id': '5a05dacc734d1d68d42d31f3',
@@ -34,6 +38,11 @@ export class ProductComponent {
             'imageUrl': 'http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png'
           }
     ];
+
+
+    ToggleImage(): void {
+        this.showImage = !this.showImage;
+    }
 }
 
 
