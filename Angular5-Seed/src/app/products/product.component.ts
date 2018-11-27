@@ -22,7 +22,7 @@ export class ProductComponent implements OnInit {
 
     ngOnInit(): void {
         this._productService.getProduct()
-            .then((data) => this.products = data);
+            .subscribe((data) => this.products = data);
     }
 
     ToggleImage(): void {

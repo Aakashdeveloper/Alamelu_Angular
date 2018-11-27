@@ -12,6 +12,9 @@ import { AddValuePipe } from './products/addValue.pipe';
 import { FilterProduct } from './products/filterProduct.pipe';
 import { StarComponent } from './shared/star.component';
 import { ProductService } from './products/product.service';
+import { OrderComponent } from './orders/order.component';
+import { HomeComponent } from './home/home.component';
+import { ProductDetailComponent } from './products/product-detail.component';
 
 @NgModule({
     // All the modules will declare here
@@ -29,7 +32,10 @@ import { ProductService } from './products/product.service';
         MyUpperPipe,
         AddValuePipe,
         FilterProduct,
-        StarComponent
+        StarComponent,
+        OrderComponent,
+        HomeComponent,
+        ProductDetailComponent
 
     ],
     // Only Main Component Declare here
