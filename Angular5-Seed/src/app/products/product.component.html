@@ -39,7 +39,12 @@
                                  *ngIf="showImage"
                                  [style.width.px]="imageWidth"/>
                         </td>
-                        <td >{{product.productName | myUpper:"upper"}}</td>
+                        <td >
+                            <a [routerLink]="['/products',product.productId]"
+                                [queryParams]="{name:product.productName,img:product.imageUrl,desc:product.description}">
+                                {{product.productName | myUpper:"upper"}}
+                            </a>
+                        </td>
                         <td style="color:blueviolet">
                             {{product.productCode | myUpper:"lower"}}
                         </td>

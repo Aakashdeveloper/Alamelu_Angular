@@ -3,6 +3,10 @@
         Product Detail Component
     </div>
     <div class="panel-body">
-        Product Detail Content
+        <h4>Product Id: {{id}}</h4>
+        <h2>{{name}}</h2>
+        <img [src]="image" />
+        <h2>{{desc}}</h2>
+        <button class="btn btn-danger" (click)="onBack()"><<Back</button>
     </div>
 </div>
