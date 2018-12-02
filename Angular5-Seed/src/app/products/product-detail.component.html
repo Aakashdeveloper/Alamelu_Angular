@@ -4,9 +4,9 @@
     </div>
     <div class="panel-body">
         <h4>Product Id: {{id}}</h4>
-        <h2>{{name}}</h2>
-        <img [src]="image" />
-        <h2>{{desc}}</h2>
+        <h2>{{details[0].productName}}</h2>
+        <img [src]="details[0].imageUrl" />
+        <h2>{{details[0].description}}</h2>
         <button class="btn btn-danger" (click)="onBack()"><<Back</button>
     </div>
 </div>

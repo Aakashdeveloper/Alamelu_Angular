@@ -40,8 +40,7 @@
                                  [style.width.px]="imageWidth"/>
                         </td>
                         <td >
-                            <a [routerLink]="['/products',product.productId]"
-                                [queryParams]="{name:product.productName,img:product.imageUrl,desc:product.description}">
+                            <a [routerLink]="['/products',product.productId]">
                                 {{product.productName | myUpper:"upper"}}
                             </a>
                         </td>
@@ -62,3 +61,8 @@
         </div>
     </div>
 </div>
+
+
+<!---
+[queryParams]="{name:product.productName,img:product.imageUrl,desc:product.description}"
+-->

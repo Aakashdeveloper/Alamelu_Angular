@@ -13,19 +13,16 @@ export class ProductDetailComponent implements OnInit {
     name: string;
     image: string;
     desc: string;
+    details: any[];
 
     constructor(private _route: ActivatedRoute,
-                private _router: Router) {}
+                private _router: Router,
+                private _productService: ProductService) {}
 
     ngOnInit(): void {
         this.id = this._route.snapshot.params['id'];
-        this._route
-            .queryParams
-            .subscribe((data) => {
-                this.name = data['name'];
-                this.image = data['img'];
-                this.desc = data['desc'];
-            });
+        this._productService.getProductDetail(this.id)
+            .subscribe((data) => this.details = data);
     }
 
     onBack(): void {
