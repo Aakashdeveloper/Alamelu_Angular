@@ -3,29 +3,58 @@
         Customer Forms
     </div>
     <div class="panel-body">
-        <form>
-            <div class="form-group">
-                <label for="firstname">FirstName</label>
+        <form novalidate #form="ngForm" (submit)="submitForm(form)">
+            <div class="form-group" [class.has-error]="firstname.invalid">
+                <label class="control-label"
+                       for="firstname">FirstName</label>
                 <input type="text"
                         id="firstname"
                         name="firstName"
-                        ngModel
+                        [ngModel]="model.firstName"
+                        required
+                        (ngModelChange)="firstToUpper($event)"
+                        #firstname="ngModel"
                         class="form-control" />
+                <div class="alert alert-danger" *ngIf="firstname.invalid">
+                    FirstName is required
+                </div>
             </div>
-            <div class="form-group">
-            <label for="lastname">LastName</label>
+            <h2>Classes</h2>
+            <h2>{{firstname.invalid}}</h2>
+            <div class="form-group" [class.has-error]="lastName.invalid">
+            <label class="control-label"
+                    for="lastname">LastName</label>
             <input type="text"
                     id="lastname"
                     name="lastName"
-                    ngModel
+                    minlength=5
+                    #lastName="ngModel"
+                    [(ngModel)]="model.lastName"
                     class="form-control" />
+                    <div class="alert alert-danger" *ngIf="lastName.invalid">
+                        Min length should be 5
+                    </div>
+            </div>
+            <div class="form-group" [class.has-error]="email.invalid">
+                <label class="control-label"
+                        for="email">Email</label>
+                <input type="text"
+                        id="email"
+                        name="email"
+                        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                        #email="ngModel"
+                        [(ngModel)]="model.email"
+                        class="form-control" />
+                        <div class="alert alert-danger" *ngIf="email.invalid">
+                            Please enter valid email
+                        </div>
             </div>
            <div class="checkbox">
                <label>
                    <input type="checkbox"
                             name="fullTime"
                             value="fullTime"
-                            ngModel/>
+                            [(ngModel)]="model.fullTime"/>
                             FullTime
                </label>
            </div>
@@ -34,7 +63,7 @@
                    <input type="radio"
                             name="gender"
                             value="female"
-                            ngModel/>
+                            [(ngModel)]="model.gender">
                         Female
                </label>
            </div>
@@ -43,23 +72,28 @@
                     <input type="radio"
                              name="gender"
                              value="male"
-                             ngModel/>
+                             [(ngModel)]="model.gender"/>
                          Male
                 </label>
             </div>
-            <div class="form-group">
-                <label>Code Lang</label>
+            <div class="form-group" [class.has-error]="hasCodeLangError">
+                <label class="control-label">Code Lang</label>
                 <select class="form-control"
                         name="codelang"
-                        ngModel>
+                        [(ngModel)]="model.codelang"
+                        (blur)="validateCodelang($event)">
+                        <option value="default">Select Code Lang</option>
                         <option *ngFor="let lang of languages">
                             {{lang}}
                         </option>
-                       
                 </select>
+                <div class="alert alert-danger" *ngIf="hasCodeLangError">
+                    Please select valid value
+                </div>
             </div>
             <button class="btn btn-success"
-                    type="submit">Submit</button>
+                    type="submit"
+                    [disabled]="hasCodeLangError">Submit</button>
         </form>
     </div>
 </div>
